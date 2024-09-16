@@ -143,6 +143,7 @@ Tìm lỗ hổng tiềm ẩn: Thay vì thủ công thử từng exploit, mô-đu
 ![image](https://github.com/user-attachments/assets/219de827-e201-49b1-9cc6-03af54865bf0)
 
 Các options phổ biến :
+
 •	SESSION: ID của session dùng để kết nối với hệ thống mục tiêu.
 
 •	VERBOSE: Hiển thị chi tiết quá trình kiểm tra.
@@ -165,6 +166,7 @@ Model exploit/linux/local/glibc_ld_audit_dso_load_priv_esc này sử dụng LD_A
 
 5. Đặt các tùy chọn cần thiết:
 Các options phổ biến :
+
 •	SESSION: ID của session dùng để kết nối với hệ thống mục tiêu.
 
 •	LHOST: Địa chỉ IP của máy tính của bạn, nơi payload sẽ tạo một kết nối ngược.
