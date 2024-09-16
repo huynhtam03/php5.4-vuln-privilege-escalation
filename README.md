@@ -233,6 +233,7 @@ Kết quả: Đã leo thang thành công lên **root**.
    ```bash
    rm -rf ~/.msf4/logs/
    ```
+Link video thực hiện : https://youtu.be/GZgw2LahV6o?si=R3xC34NJzm-937z-
 
 
 
