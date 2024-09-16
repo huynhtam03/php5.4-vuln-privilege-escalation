@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/44e10848-1885-494a-86bb-a8e0939da59c)# PHP 5.4 Vulnerability and Privilege Escalation Lab
+# PHP 5.4 Vulnerability and Privilege Escalation Lab
 
 Dự án này mô phỏng việc khai thác lỗ hổng trong PHP 5.4.2 để thực hiện leo thang đặc quyền sử dụng Metasploit và các công cụ pentesting khác. Lab bao gồm khai thác một máy chủ web dễ bị tấn công và leo thang đặc quyền từ tài khoản người dùng giới hạn lên quyền root.
 
