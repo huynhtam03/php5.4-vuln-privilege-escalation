@@ -18,11 +18,11 @@ Dự án này mô phỏng việc khai thác lỗ hổng trong PHP 5.4.2 để th
 
 - [4.3. Nâng cấp lên phiên Meterpreter ](#4.3)
 
-- [4.4. Leo thang đặc quyền ](#4.3)
+- [4.4. Leo thang đặc quyền ](#4.4)
 
-- [4.5. Truy cập cơ sở dữ liệu ](#4.3)
+- [4.5. Truy cập cơ sở dữ liệu ](#4.5)
 
-- [4.6. Xóa dấu vết ](#4.3)
+- [4.6. Xóa dấu vết ](#4.6)
 
 
 
