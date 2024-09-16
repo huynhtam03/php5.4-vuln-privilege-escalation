@@ -144,7 +144,9 @@ Tìm lỗ hổng tiềm ẩn: Thay vì thủ công thử từng exploit, mô-đu
 
 Các options phổ biến :
 •	SESSION: ID của session dùng để kết nối với hệ thống mục tiêu.
+
 •	VERBOSE: Hiển thị chi tiết quá trình kiểm tra.
+
 •	LIMIT: Số lượng exploit tối đa để kiểm tra.
 
 
@@ -164,10 +166,15 @@ Model exploit/linux/local/glibc_ld_audit_dso_load_priv_esc này sử dụng LD_A
 5. Đặt các tùy chọn cần thiết:
 Các options phổ biến :
 •	SESSION: ID của session dùng để kết nối với hệ thống mục tiêu.
+
 •	LHOST: Địa chỉ IP của máy tính của bạn, nơi payload sẽ tạo một kết nối ngược.
+
 •	LPORT: Cổng trên máy tính của bạn mà payload sẽ tạo một kết nối ngược.
+
 •	PAYLOAD: Loại payload, chẳng hạn như windows/meterpreter/reverse_tcp hoặc linux/x64/shell/reverse_tcp.
+
 •	RHOST: Địa chỉ IP của hệ thống mục tiêu mà bạn muốn khai thác.
+
 •	RPORT: Cổng trên hệ thống mục tiêu mà bạn muốn khai thác.
 
    ```bash
