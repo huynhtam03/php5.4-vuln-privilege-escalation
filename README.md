@@ -130,7 +130,7 @@ Kết quả: Nâng cấp thành công lên Meterpreter.
 ---
 
 <a name = '4.4'></a>
-## 4.3. Leo thang đặc quyền
+## 4.4. Leo thang đặc quyền
 
 Sử dụng **Metasploit's Local Exploit Suggester** để tìm cách leo thang đặc quyền.
 Model post/multi/recon/local_exploit_suggester trong Metasploit được dùng để kiểm tra hệ thống đang bị tấn công (được kết nối qua session) nhằm tìm kiếm các lỗ hổng có thể khai thác bằng các exploit có sẵn trong framework. Nó thực hiện việc này bằng cách chạy một loạt các kiểm tra dựa trên các mô-đun exploit cục bộ (local exploit) có trong Metasploit.
@@ -190,7 +190,7 @@ Kết quả: Đã leo thang thành công lên **root**.
 ---
 
 <a name = '4.5'></a>
-## 4.3.	Truy cập cơ sở dữ liệu
+## 4.5.	Truy cập cơ sở dữ liệu
 
 1. Dừng dịch vụ MySQL:
    ```bash
@@ -213,7 +213,7 @@ Kết quả: Đã leo thang thành công lên **root**.
 
 ---
 <a name = '4.6'></a>
-## 4.3.	Xóa dấu vết
+## 4.6.	Xóa dấu vết
 
 Để xóa dấu vết sau khi khai thác, cần xóa log hệ thống và log web server.
 
